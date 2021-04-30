@@ -19,21 +19,21 @@ function generatePassword() {
 
   let password = "";
 
-  let lengthPart = prompt("How many characters do you want for your password?");
-  if (lengthPart < 8 || lengthPart > 128 || lengthPart === "") {
+  let totalLength = window.prompt("How many characters do you want for your password?");
+  if (totalLength < 8 || totalLength > 128 || totalLength === "" || isNaN(totalLength)) {
     alert("You must choose between 8 and 128 characters for your password.\nTry Again.");
     return password;
   }
 
   //  Collet Criteria for Password
-  let useUpper = confirm("Would you like to include Uppercase letters?");
-  let useLower = confirm("Would you like to include Lowercase letters?");
-  let useNumber = confirm("Would you like to include Numeric characters?");
-  let useSpecial = confirm("Would you like to include Special characters?");
+  let useUpper = window.confirm("Would you like to include Uppercase letters?");
+  let useLower = window.confirm("Would you like to include Lowercase letters?");
+  let useNumber = window.confirm("Would you like to include Numeric characters?");
+  let useSpecial = window.confirm("Would you like to include Special characters?");
 
-  console.log(lengthPart);
+  console.log(totalLength);
 
-  let partsArray = [lengthPart, useUpper, useLower, useNumber, useSpecial];
+  let partsArray = [totalLength, useUpper, useLower, useNumber, useSpecial];
 
   console.log(partsArray);
 
@@ -45,10 +45,9 @@ function generatePassword() {
 
 function createPassword(criteria) {
 
-  let upperParts = [];
-  let lowerParts = [];
-  let numberParts = [];
-  let specialParts = [];
+  let allParts = [];
+  let indexList = [];
+  let passwordString = [];
 
   //  Set Password Part Strings
   let part1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -71,24 +70,67 @@ function createPassword(criteria) {
     partDivider++;
   }
 
-  let totalParts = criteria[0] / partDivider;
-  let totalPartsDivider = Math.floor(totalParts);
 
-  for (var j = 0; j < criteria[0]; j++) {
+  let totalParts = criteria[0] / partDivider;
+  // let totalPartsDivider = Math.floor(totalParts);
+
+
+  for (let j = 0; j < totalParts; j++) {
     if (criteria[1]) {
-      upperParts.push(part1.charAt(Math.floor(Math.random() * part1.length)));
+      allParts.push(part1.charAt(Math.floor(Math.random() * part1.length)));
     }
     if (criteria[2]) {
-      lowerParts.push(part2.charAt(Math.floor(Math.random() * part2.length)));
+      allParts.push(part2.charAt(Math.floor(Math.random() * part2.length)));
     }
     if (criteria[3]) {
-      numberParts.push(part3.charAt(Math.floor(Math.random() * part3.length)));
+      allParts.push(part3.charAt(Math.floor(Math.random() * part3.length)));
     }
     if (criteria[4]) {
-      specialParts.push(part4.charAt(Math.floor(Math.random() * part4.length)));
+      allParts.push(part4.charAt(Math.floor(Math.random() * part4.length)));
     }
 
   }
+
+  console.log(allParts);
+
+  let partsLength = allParts.length;
+
+  if (criteria[0] > partsLength) {
+    var useParts = partsLength;
+  } else {
+    var useParts = criteria[0];
+  }
+
+  for (let i = 0; i < useParts; i++) {
+    indexList.push(i).charAt;
+  }
+
+  console.log(indexList);
+
+  let shuffled = indexList.sort(() => Math.random() - 0.5);
+
+  console.log(shuffled);
+
+  for (let i = 0; i < useParts; i++) {
+    passwordString = passwordString.concat(allParts.shuffled);
+  }
+
+  console.log(passwordString);
+
+  //var x = fruits.toString();
+
+
+  /*
+  let shuffleParts = "";
+  let checkIndex = 0;
+ 
+  if (checkIndex === ) {
+ 
+  }
+  Math.floor(Math.random() * criteria[0]) + 1;
+*/
+  //console.log("After: " + finalPass);
+
 
   /*
   if (criteria[1]) {
@@ -99,30 +141,11 @@ function createPassword(criteria) {
   }
   */
 
-  console.log(upperParts);
-  console.log(lowerParts);
-  console.log(numberParts);
-  console.log(specialParts);
-
-  /*
-    console.log(part1.length);
-    console.log(part1);
-  
-    console.log(part2.length);
-    console.log(part2);
-  
-    console.log(part3.length);
-    console.log(part3);
-  
-    console.log(part4.length);
-    console.log(part4);
-  
-  */
 
   let randomPart1 = Math.random() * criteria[0];
   let randomPart2 = Math.floor(Math.random() * criteria[0]) + 1;
-  console.log(randomPart1);
-  console.log(randomPart2);
+  console.log("Rand1: " + randomPart1);
+  console.log("Rand2: " + randomPart2);
   /*
     for (var i = 0; i < length; i++) {
       result.push(characters.charAt(Math.floor(Math.random() *
