@@ -22,7 +22,9 @@ Generates a password with a lenght between 8 and 128 characters long with the ch
 Published Github Site URL:
 https://jeffseverson2001.github.io/03-JavaScript-02-Homework/
 
-    ![alt Password Generator](assets/03-javascript-homework-demo.png)
+
+![alt Password Generator](assets/03-javascript-homework-demo.png)
+
 
 ##  Credits
 
